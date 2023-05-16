@@ -72,14 +72,15 @@ export default function App() {
   }
 
   const handleDelete = async (id) => {
+    setOpen({
+      id:0,
+      show:false
+    });
     setSpinnerShow(true);
     let itemsFromApi = await apiRequest('DELETE', `api/items/delete/${id}`);
     setSpinnerShow(false)
     if(itemsFromApi && itemsFromApi.data){
-      setOpen({
-        id:0,
-        show:false
-      });
+      
       setItems(itemsFromApi.data);
     }
   }
